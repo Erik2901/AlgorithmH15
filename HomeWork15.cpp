@@ -10,11 +10,11 @@ int symbolSum(char carr[]) {
     return sum;
 }
 
-void coins(int* arr,int* arrcount, const int n, int coinsum) {
+void Coins(int* arr, int* arrcount, int coinsum) {
     int tmp;
-    for (size_t i = 0; i < n; i++)
+    for (size_t i = 0; i < sizeof(arr); i++)
     {
-        for (size_t i = 0; i < n - 1; i++)
+        for (size_t i = 0; i < sizeof(arr) - 1; i++)
         {
             if (arr[i + 1] > arr[i])
             {
@@ -24,19 +24,12 @@ void coins(int* arr,int* arrcount, const int n, int coinsum) {
             }
         }
     }
-    for (size_t i = 0; i < n;)
+    for (size_t i = 0; i < sizeof(arr); i++)
     {
-        if (coinsum >= arr[i])
-        {
-            arrcount[i]++;
-            coinsum = coinsum - arr[i];
-            i = 0;
-        }
-        else {
-            i++;
-        }
+        arrcount[i] = coinsum / arr[i];
+        coinsum = coinsum - (arrcount[i] * arr[i]);
     }
-    for (size_t i = 0; i < n; i++)
+    for (size_t i = 0; i < sizeof(arr); i++)
     {
         if (arrcount[i] > 1)
         {
@@ -61,12 +54,11 @@ int main()
 
     /////// exercise 2
 
-    const int n = 5;
     int arr[] = { 50,10,5,2,1 };
     int arrcount[] = { 0,0,0,0,0 };
     int coinsum = 98;
 
-    coins(arr, arrcount, n, coinsum);
+    Coins(arr, arrcount, coinsum);
 
     ////////
 
