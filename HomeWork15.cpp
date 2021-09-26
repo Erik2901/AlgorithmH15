@@ -1,9 +1,8 @@
 ﻿#include <iostream>
-#define SZ 64
 
-int symbolSum(char carr[]) {
+int symbolSum(char carr[], int sz) {
     int sum = 0;
-    for (size_t i = 0; i < SZ; i++)
+    for (size_t i = 0; i < sz - 1; i++)
     {
         sum += carr[i];
     }
@@ -46,9 +45,9 @@ int main()
 {
     ////// exercise 1
 
-    char carr[SZ] = "Hello World!";
-
-    std::cout << symbolSum(carr) << std::endl;
+    char carr[] = "Hello World!";
+    int sz = sizeof(carr);
+    std::cout << symbolSum(carr, sz) << std::endl;
 
     ///////
 
