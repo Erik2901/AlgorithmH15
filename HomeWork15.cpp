@@ -55,7 +55,7 @@ int main()
     /////// exercise 2
 
     int arr[] = { 50,10,5,2,1 };
-    int arrcount[] = { 0,0,0,0,0 };
+    int arrcount[sizeof(arr)] = { 0 };
     int coinsum = 98;
 
     Coins(arr, arrcount, coinsum);
